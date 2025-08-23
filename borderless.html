@@ -4238,6 +4238,158 @@ input:checked + .slider:before {
 }
 /* ▲▲▲ 新CSS粘贴结束 ▲▲▲ */
 
+/* ▼▼▼ 【全新】主题库弹窗布局微调 ▼▼▼ */
+
+/* 1. 调整“我的主题库”标题栏的高度 */
+#theme-library-modal .modal-header {
+    /* 修改这里的第一个数字(20px)来调整标题栏高度 */
+    padding: 20px 15px; 
+}
+
+/* 2. 调整每个主题名字框的样式 */
+#theme-library-modal .existing-group-item {
+    width: 80%; 
+    margin: 0 auto;
+    /* 修改这里的第一个数字(15px)来调整每个框的高度 */
+    padding: 9px 20px; 
+}
+
+/* ▲▲▲ 微调代码粘贴结束 ▲▲▲ */
+
+/* ▼▼▼ 【全新】聊天记录搜索功能样式 (从这里开始复制) ▼▼▼ */
+
+/* 1. 聊天设置里那个新的“放大镜”搜索按钮的样式 */
+#open-chat-search-btn {
+    background: none; /* 无背景 */
+    border: none; /* 无边框 */
+    cursor: pointer; /* 鼠标悬停时显示为小手 */
+    padding: 5px;
+    margin-left: auto; /* 【核心】让它自动靠到最右边 */
+    color: var(--text-secondary); /* 使用次要文字颜色，看起来不突兀 */
+    transition: color 0.2s; /* 添加颜色变化的过渡效果 */
+}
+
+#open-chat-search-btn:hover {
+    color: var(--accent-color); /* 鼠标悬停时变为主题色 */
+}
+
+#open-chat-search-btn svg {
+    width: 20px; /* 控制图标大小 */
+    height: 20px;
+}
+
+/* 2. 搜索结果列表的整体样式 */
+#search-results-list {
+    padding: 10px 0;
+}
+
+/* 3. 每一条搜索结果的样式 */
+.search-result-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    display: flex; /* 使用flex布局，让头像和内容水平排列 */
+    gap: 12px; /* 头像和内容之间的间距 */
+}
+
+.search-result-item:hover {
+    background-color: #f5f5f5; /* 悬停时给一个淡淡的背景色 */
+}
+
+.search-result-item .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* 防止头像被压缩 */
+}
+
+.search-result-item .info {
+    display: flex;
+    flex-direction: column; /* 让名字和内容垂直排列 */
+    gap: 4px; /* 名字和内容之间的间距 */
+    overflow: hidden; /* 防止内容过长时溢出 */
+}
+
+.search-result-item .name-line {
+    display: flex;
+    justify-content: space-between; /* 让名字和时间戳两端对齐 */
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.search-result-item .name {
+    font-weight: 600;
+    font-size: 14px; /* 名字字号大一点 */
+    color: var(--text-primary); /* 使用主要文字颜色 */
+}
+
+.search-result-item .content {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    word-break: break-all; /* 确保长文本能换行 */
+
+    /* 限制内容最多显示2行，超出部分用省略号代替 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 4. 搜索结果中“关键词高亮”的样式 */
+.search-keyword-highlight {
+    background-color: #fff3cd; /* 淡黄色背景 */
+    color: var(--accent-color); /* 使用主题色来显示关键词 */
+    font-weight: 600; /* 加粗 */
+}
+
+/* 5. “共xx条记录”那段文字的样式 */
+#search-results-count {
+    padding: 10px 15px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    background-color: #f9f9f9;
+    border-bottom: 1px solid var(--border-color);
+}
+
+
+
+/* 6. 用于跳转后临时高亮消息的动画 (最终修正版) */
+@keyframes highlight-fade {
+  [cite_start]from { background-color: rgba(0, 123, 255, 0.4); [cite: 902] }
+  to { background-color: transparent; }
+}
+
+/* 【核心修正】让动画直接作用于消息气泡本身，而不是外层容器 */
+.message-wrapper.highlighted .message-bubble {
+  [cite_start]animation: highlight-fade 2s ease-out; [cite: 903]
+}
+
+/* ▲▲▲ 【全新】聊天记录搜索功能样式 (复制到这里结束) ▲▲▲ */
+
+/* ▼▼▼ 【全新】聊天记录搜索页面美化 ▼▼▼ */
+
+#chat-search-screen {
+    background-color: #f9f9f9; /* 使用一个柔和的白色，与其他列表页面保持一致 */
+}
+
+/* 修正夜间模式下的背景 */
+#phone-screen.dark-mode #chat-search-screen {
+    background-color: #000000;
+}
+
+#phone-screen.dark-mode #chat-search-input {
+    color: #ffffff; /* 夜间模式下输入文字为白色 */
+}
+
+#phone-screen.dark-mode #chat-search-input::placeholder {
+    color: #8d8d92; /* 夜间模式下的占位符颜色 */
+}
+
+/* ▲▲▲ 新CSS粘贴结束 ▲▲▲ */
+
 
     </style>
 </head>
@@ -4925,10 +5077,37 @@ input:checked + .slider:before {
 </div>
 <!-- ▲▲▲ 新HTML粘贴结束 ▲▲▲ -->
 
-        </div>
+    <div id="chat-search-screen" class="screen">
+    <div class="header">
+        <span class="back-btn" id="search-back-btn">‹</span>
+        <input type="search" id="chat-search-input" placeholder="搜索..." style="flex-grow: 1; border: none; background: transparent; font-size: 16px; outline: none;">
     </div>
+    
+    <div id="search-results-list" class="list-container" style="padding: 0;">
+        </div>
+    
   
-    <div id="chat-settings-modal" class="modal"><div class="modal-content"><div class="modal-header"><span>聊天设置</span></div><div class="modal-body"><div class="form-group" id="chat-name-group"><label for="chat-name-input">备注名 / 群名</label><input type="text" id="chat-name-input"></div>
+
+<div id="search-pagination-controls" style="display: none; padding: 10px; text-align: center; border-top: 1px solid var(--border-color); background-color: var(--secondary-bg); position: absolute; bottom: 0; width: 100%; box-sizing: border-box; display: flex; justify-content: space-around; align-items: center;">
+    <button id="search-prev-page-btn" class="form-button-secondary" style="width: auto; margin: 0;">上一页</button>
+    <span id="search-page-indicator" style="font-size: 14px; color: var(--text-secondary);"></span>
+    <button id="search-next-page-btn" class="form-button-secondary" style="width: auto; margin: 0;">下一页</button>
+</div>
+</div>
+
+
+       
+  
+    <div id="chat-settings-modal" class="modal"><div class="modal-content"><div class="modal-header"><span>聊天设置</span></div><div class="modal-body"><div class="form-group" id="chat-name-group">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+        <label for="chat-name-input">备注名 / 群名</label>
+        <button id="open-chat-search-btn" title="搜索聊天记录">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+    </div>
+    <input type="text" id="chat-name-input">
+</div>
+
 
     <!-- ▼▼▼ 请将这段新代码粘贴到“备注名”输入框的 form-group 之后 ▼▼▼ -->
     <div class="form-group" id="assign-group-section" style="display: none;"> <!-- 默认隐藏，只对单聊显示 -->
@@ -4970,13 +5149,13 @@ input:checked + .slider:before {
 
 <!-- ▼▼▼ 请将这段新代码粘贴到“聊天字体大小”的 form-group 之后 ▼▼▼ -->
 <div class="form-group">
-    <label for="custom-css-input">
-        自定义气泡样式 (CSS)
-        <span style="margin-left: 10px;">
-            <button id="save-theme-btn" type="button" style="background: none; border: 1px solid #4cd964; color: #4cd964; font-size: 12px; padding: 2px 8px; border-radius: 5px; cursor: pointer;">保存主题</button>
-            <button id="reset-custom-css-btn" type="button" style="background: none; border: 1px solid #ccc; color: #555; font-size: 12px; padding: 2px 8px; border-radius: 5px; cursor: pointer; margin-left: 5px;">重置</button>
-        </span>
-    </label>
+   <label for="custom-css-input">
+    自定义气泡样式 (CSS)
+    <span style="margin-left: 10px;">
+        <button id="save-theme-btn" type="button" style="background: none; border: 1px solid var(--accent-color); color: var(--accent-color); font-size: 12px; padding: 2px 8px; border-radius: 5px; cursor: pointer;">保存主题</button>
+        <button id="reset-custom-css-btn" type="button" style="background: none; border: 1px solid #ccc; color: #555; font-size: 12px; padding: 2px 8px; border-radius: 5px; cursor: pointer; margin-left: 5px;">重置</button>
+    </span>
+</label>
     <textarea id="custom-css-input" rows="5" style="width: 100%; margin-top: 8px; font-family: monospace; font-size: 12px; resize: vertical;" placeholder="/* 示例：为“我”的气泡添加渐变背景和阴影 */
 .message-bubble.user .content {
   background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
@@ -12911,6 +13090,274 @@ async function deleteSavedTheme(themeId) {
 
 // ▲▲▲ 新函数粘贴结束 ▲▲▲
 
+// ▼▼▼ 【全新】聊天记录搜索功能核心函数 (从这里开始复制) ▼▼▼
+
+// --- 1. 全局变量，用于存储搜索状态 ---
+let currentSearchResults = []; // 存储所有搜索结果
+let currentSearchPage = 1;     // 当前所在的页码
+const SEARCH_RESULTS_PER_PAGE = 20; // 每页显示20条结果
+
+/**
+ * 【总入口】打开聊天记录搜索界面
+ */
+function openChatSearchScreen() {
+    if (!state.activeChatId) return;
+
+    // 清理上一次的搜索状态
+    currentSearchResults = [];
+    currentSearchPage = 1;
+    document.getElementById('chat-search-input').value = '';
+    document.getElementById('search-results-list').innerHTML = '<p id="search-initial-prompt" style="text-align:center; color: var(--text-secondary); padding: 50px 20px;">输入关键词，寻找你与Ta的专属回忆~</p>';
+    document.getElementById('search-pagination-controls').style.display = 'none';
+
+    // 隐藏设置弹窗，显示搜索界面
+    document.getElementById('chat-settings-modal').classList.remove('visible');
+    showScreen('chat-search-screen');
+    // 让输入框自动获得焦点，方便用户直接输入
+    setTimeout(() => document.getElementById('chat-search-input').focus(), 300);
+}
+
+/**
+ * 【核心】执行搜索操作
+ */
+function performSearch() {
+    const chat = state.chats[state.activeChatId];
+    if (!chat) return;
+
+    const keyword = document.getElementById('chat-search-input').value.trim().toLowerCase();
+
+    // 如果关键词为空，则清空结果
+    if (!keyword) {
+        currentSearchResults = [];
+        document.getElementById('search-results-list').innerHTML = '<p id="search-initial-prompt" style="text-align:center; color: var(--text-secondary); padding: 50px 20px;">输入关键词，寻找你与Ta的专属回忆~</p>';
+        document.getElementById('search-pagination-controls').style.display = 'none';
+        return;
+    }
+
+    // 筛选包含关键词的消息
+    currentSearchResults = chat.history.filter(msg => {
+        // 只搜索那些对用户可见的消息
+        if (msg.isHidden || msg.type === 'recalled_message') {
+            return false;
+        }
+        // 将不同类型的消息内容统一转为小写字符串进行匹配
+        let contentToSearch = '';
+        if (typeof msg.content === 'string') {
+            contentToSearch = msg.content.toLowerCase();
+        } else if (msg.type === 'voice_message') {
+            contentToSearch = (msg.content || '').toLowerCase();
+        } else if (msg.meaning) { // 比如表情的含义
+            contentToSearch = msg.meaning.toLowerCase();
+        }
+        return contentToSearch.includes(keyword);
+    }).reverse(); // 将结果反转，实现从新到旧排序
+
+    // 搜索后，重置到第一页并渲染结果
+    currentSearchPage = 1;
+    renderSearchResults();
+}
+
+
+/**
+ * 【核心】渲染搜索结果列表和翻页按钮 (修正版)
+ */
+function renderSearchResults() {
+    const listEl = document.getElementById('search-results-list');
+    const paginationEl = document.getElementById('search-pagination-controls');
+    listEl.innerHTML = ''; 
+
+    const keyword = document.getElementById('chat-search-input').value.trim();
+    const totalResults = currentSearchResults.length;
+
+    const countEl = document.createElement('p');
+    countEl.id = 'search-results-count';
+    if (totalResults > 0) {
+        countEl.innerHTML = `共 <span style="color: var(--accent-color); font-weight: bold;">${totalResults}</span> 条与 <span style="color: var(--accent-color); font-weight: bold;">“${keyword}”</span> 相关的聊天记录`;
+    } else {
+        countEl.innerHTML = `未找到与 <span style="color: var(--accent-color); font-weight: bold;">“${keyword}”</span> 相关的聊天记录`;
+    }
+    listEl.appendChild(countEl);
+
+    if (totalResults === 0) {
+        paginationEl.style.display = 'none';
+        return;
+    }
+
+    const startIndex = (currentSearchPage - 1) * SEARCH_RESULTS_PER_PAGE;
+    const endIndex = startIndex + SEARCH_RESULTS_PER_PAGE;
+    const pageResults = currentSearchResults.slice(startIndex, endIndex);
+
+    pageResults.forEach(msg => {
+        const item = createSearchResultItem(msg, keyword);
+        listEl.appendChild(item);
+    });
+
+    // --- ▼▼▼【核心修正】确保这部分代码存在！▼▼▼ ---
+    const totalPages = Math.ceil(totalResults / SEARCH_RESULTS_PER_PAGE);
+    const pageIndicator = document.getElementById('search-page-indicator');
+    if (pageIndicator) {
+        pageIndicator.textContent = `第 ${currentSearchPage} / 共 ${totalPages} 页`;
+    }
+    // --- ▲▲▲ 修正结束 ▲▲▲ ---
+
+    paginationEl.style.display = 'flex';
+    document.getElementById('search-prev-page-btn').disabled = currentSearchPage === 1;
+    document.getElementById('search-next-page-btn').disabled = endIndex >= totalResults;
+}
+
+
+
+
+
+
+/**
+ * 【辅助】创建单条搜索结果的HTML元素
+ */
+function createSearchResultItem(msg, keyword) {
+    const item = document.createElement('div');
+    item.className = 'search-result-item';
+    item.dataset.timestamp = msg.timestamp; // 存储时间戳，用于跳转
+
+    const chat = state.chats[state.activeChatId];
+    const isUser = msg.role === 'user';
+    let senderName, senderAvatar;
+
+    // 判断发送者信息（这段逻辑和聊天窗口的逻辑是一样的）
+    if (isUser) {
+        senderName = chat.isGroup ? (chat.settings.myNickname || '我') : '我';
+        senderAvatar = chat.settings.myAvatar || (chat.isGroup ? defaultMyGroupAvatar : defaultAvatar);
+    } else {
+        if (chat.isGroup) {
+            const member = chat.members.find(m => m.originalName === msg.senderName);
+            senderName = member ? member.groupNickname : (msg.senderName || '未知成员');
+            senderAvatar = member ? member.avatar : defaultGroupMemberAvatar;
+        } else {
+            senderName = chat.name;
+            senderAvatar = chat.settings.aiAvatar || defaultAvatar;
+        }
+    }
+
+    // 处理并高亮关键词
+    let contentText = msg.content || msg.meaning || '';
+    const regex = new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    const highlightedContent = contentText.replace(regex, `<span class="search-keyword-highlight">${keyword}</span>`);
+
+    const date = new Date(msg.timestamp);
+    const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+    item.innerHTML = `
+        <img src="${senderAvatar}" class="avatar">
+        <div class="info">
+            <div class="name-line">
+                <span class="name">${senderName}</span>
+                <span class="timestamp">${dateString}</span>
+            </div>
+            <div class="content">${highlightedContent}</div>
+        </div>
+    `;
+    return item;
+}
+
+/**
+ * 【核心】跳转到指定的聊天记录位置
+ */
+
+
+/**
+ * 【核心】跳转到指定的聊天记录位置 (终极方案 V5：强制校准定位)
+ */
+async function jumpToMessage(timestamp) {
+    showScreen('chat-interface-screen');
+    const chat = state.chats[state.activeChatId];
+    if (!chat) return;
+
+    const totalMessages = chat.history.length;
+    const messageIndex = chat.history.findIndex(m => m.timestamp === timestamp);
+    
+    if (messageIndex === -1) {
+        alert("找不到原始消息，可能已被删除。");
+        return;
+    }
+
+    const messagesContainer = document.getElementById('chat-messages');
+    
+    // 定义一个更强大的、可重复执行的滚动和高亮函数
+    const scrollToAndHighlight = (element, isFirstAttempt = true) => {
+        if (!element || !document.body.contains(element)) return;
+        
+        // 【核心：手动计算居中位置】
+        // 元素顶部相对于其滚动容器的距离
+        const elementTop = element.offsetTop;
+        // 元素自身的高度
+        const elementHeight = element.clientHeight;
+        // 滚动容器的可视高度
+        const containerHeight = messagesContainer.clientHeight;
+        
+        // 计算要使元素居中时，容器需要滚动的距离
+        const desiredScrollTop = elementTop - (containerHeight / 2) + (elementHeight / 2);
+
+        // 执行滚动
+        messagesContainer.scrollTop = desiredScrollTop;
+
+        // 【核心】高亮效果只在第一次尝试时应用，避免闪烁
+        if (isFirstAttempt) {
+            element.classList.add('highlighted');
+            setTimeout(() => {
+                if (document.body.contains(element)) {
+                    element.classList.remove('highlighted');
+                }
+            }, 2000);
+        }
+    };
+
+    let messageEl = messagesContainer.querySelector(`.message-wrapper[data-timestamp="${timestamp}"]`);
+
+    // 如果目标消息尚未渲染
+    if (!messageEl) {
+        // --- 这部分逻辑保持不变，用于加载正确的历史消息 ---
+        const targetPage = Math.floor((totalMessages - messageIndex - 1) / SEARCH_RESULTS_PER_PAGE);
+        const messagesToRenderCount = (targetPage + 1) * SEARCH_RESULTS_PER_PAGE;
+        const messagesSlice = chat.history.slice(-messagesToRenderCount);
+        
+        messagesContainer.innerHTML = '';
+        messagesSlice.forEach(msg => appendMessage(msg, chat, true));
+        currentRenderedCount = messagesSlice.length;
+        
+        if (totalMessages > currentRenderedCount) {
+            prependLoadMoreButton(messagesContainer);
+        }
+        
+        // --- 等待所有异步资源加载完毕 ---
+        const images = messagesContainer.querySelectorAll('img');
+        const imageLoadPromises = Array.from(images).map(img => new Promise(resolve => {
+            if (img.complete) resolve();
+            else { img.onload = resolve; img.onerror = resolve; }
+        }));
+        const fontLoadPromise = document.fonts.ready;
+        await Promise.all([...imageLoadPromises, fontLoadPromise]);
+        
+        // 重新获取元素
+        messageEl = messagesContainer.querySelector(`.message-wrapper[data-timestamp="${timestamp}"]`);
+
+    }
+    
+    // 【终极武器：强制校准】
+    // 无论消息是刚刚渲染的还是已存在的，我们都执行这套强制校准流程
+    if (messageEl) {
+        // 第一次尝试：立即定位
+        scrollToAndHighlight(messageEl, true);
+        
+        // 第二次尝试：在100毫秒后再次校准，对抗初级“余震”
+        setTimeout(() => scrollToAndHighlight(messageEl, false), 100);
+        
+        // 第三次尝试：在300毫秒后进行最终校准，对抗顽固的“余震”
+        setTimeout(() => scrollToAndHighlight(messageEl, false), 300);
+    }
+}
+
+
+
+
         // ===================================================================
         // 4. 初始化函数 init()
         // ===================================================================
@@ -15367,6 +15814,59 @@ document.getElementById('theme-list-container').addEventListener('click', (e) =>
 
 // ▲▲▲ 新增代码粘贴结束 ▲▲▲
 
+// ▼▼▼ 【全新】聊天记录搜索功能事件绑定 (从这里开始复制) ▼▼▼
+
+// 1. 为聊天设置里的“放大镜”按钮绑定打开搜索界面的事件
+document.getElementById('open-chat-search-btn').addEventListener('click', openChatSearchScreen);
+
+// 2. 为搜索界面的“返回”按钮绑定返回聊天设置的事件
+document.getElementById('search-back-btn').addEventListener('click', () => {
+    // 关闭搜索界面
+    showScreen('chat-interface-screen');
+    // 重新打开聊天设置弹窗，回到原来的地方
+    document.getElementById('chat-settings-btn').click();
+});
+
+// 3. 为搜索输入框绑定“回车”事件，优化性能
+document.getElementById('chat-search-input').addEventListener('keydown', (e) => {
+    // 检查按下的键是否是“Enter”
+    if (e.key === 'Enter') {
+        // 阻止回车键的默认行为（如表单提交）
+        e.preventDefault(); 
+        // 执行搜索
+        performSearch();
+    }
+});
+
+
+// 4. 使用事件委托，为整个结果列表绑定点击事件
+document.getElementById('search-results-list').addEventListener('click', (e) => {
+    const item = e.target.closest('.search-result-item');
+    if (item) {
+        const timestamp = parseInt(item.dataset.timestamp);
+        if (!isNaN(timestamp)) {
+            jumpToMessage(timestamp);
+        }
+    }
+});
+
+// 5. 绑定翻页按钮事件
+document.getElementById('search-prev-page-btn').addEventListener('click', () => {
+    if (currentSearchPage > 1) {
+        currentSearchPage--;
+        renderSearchResults();
+    }
+});
+
+document.getElementById('search-next-page-btn').addEventListener('click', () => {
+    const totalPages = Math.ceil(currentSearchResults.length / SEARCH_RESULTS_PER_PAGE);
+    if (currentSearchPage < totalPages) {
+        currentSearchPage++;
+        renderSearchResults();
+    }
+});
+
+// ▲▲▲ 【全新】聊天记录搜索功能事件绑定 (复制到这里结束) ▲▲▲
 
         // ===================================================================
         // 5. 启动！
